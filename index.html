@@ -6,7 +6,7 @@
     <title>pjandastudios - Welcome</title>
     <style>
         body {
-            background-color: #1d2523;
+            background-color: #1a1a1a;
             color: #ffffff;
             font-family: Arial, sans-serif;
             margin: 0;
@@ -31,16 +31,27 @@
             color: #ffffff;
         }
         .hero {
-            background-image: url('assets/hero-image.jpg');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, #ffffff 50%, #d3d3d3 100%);
             height: 400px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            opacity: 0;
+            animation: fade-in 2s ease-in-out forwards;
         }
+
+        /* Keyframes for the fade-in animation */
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
         .hero h1 {
             font-size: 36px;
             margin-bottom: 10px;
