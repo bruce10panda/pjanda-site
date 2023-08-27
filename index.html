@@ -3,60 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PJanda's Tech Haven</title>
+    <title>pjandastudios - Welcome</title>
     <style>
         body {
+            background-color: #1d2523;
+            color: #ffffff;
             font-family: Arial, sans-serif;
-            text-align: center;
             margin: 0;
             padding: 0;
         }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-        }
-        h1 {
-            margin: 0;
-        }
-        #buttons {
+        .header {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .nav {
+            display: flex;
+        }
+        .nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+        .hero {
+            background-image: url('assets/hero-image.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 80vh;
+            text-align: center;
         }
-        .button {
-            margin: 10px;
-            padding: 15px 30px;
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .hero p {
             font-size: 18px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
         }
-        .button:hover {
-            background-color: #0056b3;
-        }
+        /* Add more styling as needed */
     </style>
 </head>
 <body>
-    <header>
-        <h1>PJanda's Tech Haven</h1>
-    </header>
-    <div id="buttons">
-        <a href="#game-studio" class="button">Game Studio</a>
-        <a href="#social-media" class="button">Social Media</a>
+    <div class="header">
+        <div class="logo">pjandastudios</div>
+        <div class="nav">
+            <a href="#home">Home</a>
+            <a href="#games">Games</a>
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact</a>
+        </div>
     </div>
-    <section id="game-studio">
-        <h2>Game Studio</h2>
-        <p>Dive into the captivating world of gaming with PJanda's Game Studio...</p>
-        <!-- Add game-related content here -->
-    </section>
-    <section id="social-media">
-        <h2>Social Media</h2>
-        <p>Connect, engage, and share your tech passion with like-minded individuals...</p>
-        <!-- Add social media-related content here -->
-    </section>
+    <div class="hero">
+        <h1>Welcome to pjandastudios</h1>
+        <p>Your gateway to exciting games and immersive experiences.</p>
+    </div>
+    <div id="games" class="section">
+        <!-- Games content goes here -->
+    </div>
+    <div id="about" class="section">
+        <!-- About Us content goes here -->
+    </div>
+    <div id="contact" class="section">
+        <!-- Contact content goes here -->
+    </div>
 </body>
 </html>
