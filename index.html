@@ -1,89 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pjandastudios - Welcome</title>
-    <style>
-        body {
-            background-color: #1a1a1a;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-        }
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .nav {
-            display: flex;
-        }
-        .nav a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: #ffffff;
-        }
-        .hero {
-            background: linear-gradient(135deg, #ffffff 50%, #d3d3d3 100%);
-            height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            opacity: 0;
-            animation: fade-in 2s ease-in-out forwards;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      overflow: hidden; /* Hide both horizontal and vertical scrollbars */
+    }
 
-        /* Keyframes for the fade-in animation */
-        @keyframes fade-in {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
+    .section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #111;
+      color: white;
+      scroll-snap-align: start; /* Snap to the top of each section */
+    }
 
-        .hero h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-        .hero p {
-            font-size: 18px;
-        }
-        /* Add more styling as needed */
-    </style>
+    .pjanda {
+      position: relative; /* Add relative positioning for the arrow */
+      font-size: 17rem; /* Increase font size */
+      font-weight: bold;
+      margin: 2rem 0; /* Add margin for spacing */
+      opacity: 0; /* Initially hide the text */
+      animation: fade-in 2s ease forwards; /* Apply fade-in animation */
+      background: linear-gradient(45deg, #00a2ff, #2ee55c);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .arrow-img {
+      width: 2rem; /* Adjust arrow image width */
+      position: absolute;
+      top: 120%; /* Position the arrow below the text */
+      left: 50%; /* Center the arrow horizontally */
+      transform: translateX(-50%);
+    }
+
+    .text {
+      font-size: 2rem; /* Adjust font size */
+      font-weight: bold;
+      margin: 1rem 0; /* Add margin for spacing */
+      opacity: 0; /* Initially hide the text */
+      animation: fade-in 2s ease forwards; /* Apply fade-in animation */
+    }
+
+    .button {
+      display: inline-block;
+      background: linear-gradient(45deg, #00a2ff, #2ee55c);
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+      padding: 10px 20px;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .button:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes fade-in {
+      to {
+        opacity: 1; /* Gradually increase opacity to make text appear */
+      }
+    }
+  </style>
+  <title>pjanda</title>
 </head>
 <body>
-    <div class="header">
-        <div class="logo">pjandastudios</div>
-        <div class="nav">
-            <a href="#home">Home</a>
-            <a href="#games">Games</a>
-            <a href="#about">About Us</a>
-            <a href="#contact">Contact</a>
-        </div>
+  <div class="section" id="home">
+    <div class="container">
+      <h1 class="pjanda">pjanda</h1>
+      <img src="arrow.png" alt="Arrow" class="arrow-img">
     </div>
-    <div class="hero">
-        <h1>Welcome to pjandastudios</h1>
-        <p>Your gateway to exciting games and immersive experiences.</p>
+  </div>
+
+  <div class="section" id="about" style="background-color: #222;">
+    <div class="container">
+      <p class="text">We are a team run by 2 people, <br> but one does the work ;)</p>
+      <a href="#projects" class="button">Check Projects</a>
     </div>
-    <div id="games" class="section">
-        <!-- Games content goes here -->
-    </div>
-    <div id="about" class="section">
-        <!-- About Us content goes here -->
-    </div>
-    <div id="contact" class="section">
-        <!-- Contact content goes here -->
-    </div>
+  </div>
+
+  <script>
+    let scrolling = false;
+    const sections = document.querySelectorAll('.section');
+    let currentSection = 0;
+
+    window.addEventListener('wheel', (e) => {
+      if (!scrolling) {
+        scrolling = true;
+        if (e.deltaY > 0 && currentSection < sections.length - 1) {
+          currentSection++;
+        } else if (e.deltaY < 0 && currentSection > 0) {
+          currentSection--;
+        }
+        sections[currentSection].scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => {
+          scrolling = false;
+        }, 800); // Delay to prevent rapid scrolling
+      }
+    });
+  </script>
 </body>
 </html>
