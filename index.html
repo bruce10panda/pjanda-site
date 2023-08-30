@@ -28,19 +28,18 @@
       font-weight: bold;
       margin: 2rem 0; /* Add margin for spacing */
       opacity: 0; /* Initially hide the text */
-      animation: fade-in 2s ease forwards; /* Apply fade-in animation */
+      animation: fade-in 5s ease forwards; /* Apply fade-in animation */
       background: linear-gradient(45deg, #00a2ff, #2ee55c);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
 
-    .arrow-img {
-      width: 2rem; /* Adjust arrow image width */
-      position: absolute;
-      top: 120%; /* Position the arrow below the text */
-      left: 50%; /* Center the arrow horizontally */
-      transform: translateX(-50%);
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
     .text {
@@ -61,6 +60,7 @@
       padding: 10px 20px;
       margin-top: 1rem;
       cursor: pointer;
+      text-decoration: none; /* Remove underline */
       transition: transform 0.2s;
     }
 
@@ -80,14 +80,13 @@
   <div class="section" id="home">
     <div class="container">
       <h1 class="pjanda">pjanda</h1>
-      <img src="arrow.png" alt="Arrow" class="arrow-img">
     </div>
   </div>
 
   <div class="section" id="about" style="background-color: #222;">
-    <div class="container">
-      <p class="text">We are a team run by 2 people, <br> but one does the work ;)</p>
-      <a href="#projects" class="button">Check Projects</a>
+    <div class="container text-container">
+      <p class="text">wanna see what we do?</p>
+      <a href="projects.html" class="button">Check Projects</a>
     </div>
   </div>
 

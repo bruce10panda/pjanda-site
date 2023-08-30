@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #111;
+      color: white;
+      scroll-snap-align: start;
+    }
+
+    .project-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem;
+    }
+
+    .project-card {
+      background-color: #333;
+      border-radius: 10px;
+      padding: 1rem;
+      margin: 1rem;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .project-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .text {
+      font-size: 3rem;
+      font-weight: bold;
+      margin: 1rem 0;
+      background: linear-gradient(45deg, #00a2ff, #2ee55c);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: fade-in 2s ease forwards;
+    }
+
+    @keyframes fade-in {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+  <title>Projects</title>
+</head>
+<body>
+  <div class="section" id="projects" style="background-color: #111;">
+    <div class="container text-container">
+      <h2 class="text">Our Projects</h2>
+    </div>
+    <div class="project-list">
+      <div class="project-card">
+        <img src="app1.jpg" alt="App 1">
+        <h3>App 1</h3>
+        <p>Description of App 1...</p>
+      </div>
+      <div class="project-card">
+        <img src="game1.jpg" alt="Game 1">
+        <h3>Game 1</h3>
+        <p>Description of Game 1...</p>
+      </div>
+      <!-- Add more project cards as needed -->
+    </div>
+  </div>
+
+  <script>
+    let scrolling = false;
+    const sections = document.querySelectorAll('.section');
+    let currentSection = 0;
+
+    window.addEventListener('wheel', (e) => {
+      if (!scrolling) {
+        scrolling = true;
+        if (e.deltaY > 0 && currentSection < sections.length - 1) {
+          currentSection++;
+        } else if (e.deltaY < 0 && currentSection > 0) {
+          currentSection--;
+        }
+        sections[currentSection].scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => {
+          scrolling = false;
+        }, 800);
+      }
+    });
+  </script>
+</body>
+</html>
