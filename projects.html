@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    // Function to check if the user is on a mobile device
+    function isMobileDevice() {
+      return /Mobi|Android/i.test(navigator.userAgent);
+    }
+  
+    // Redirect to the mobile version if the user is on a mobile device
+    if (isMobileDevice()) {
+      window.location.href = 'mobileprojects.html';
+    }
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
