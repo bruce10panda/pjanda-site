@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      background-color: #111;
+    }
+
+    .section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      scroll-snap-align: start;
+    }
+
+    .game-container {
+      text-align: center;
+    }
+
+    .game-title {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .play-button {
+      background: linear-gradient(45deg, #00a2ff, #2ee55c);
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+      padding: 10px 20px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .play-button:hover {
+      transform: scale(1.1);
+    }
+
+    .game-iframe {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #111;
+      display: none;
+    }
+
+    .close-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      color: white;
+      display: none;
+      z-index: 9999;
+    }
+
+    .logo-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      background: linear-gradient(45deg, #00a2ff, #2ee55c);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Mobile responsiveness */
+    @media screen and (max-width: 600px) {
+      .game-title {
+        font-size: 2rem;
+      }
+
+      .play-button {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+  <title>Blockstorm</title>
+</head>
+<body>
+  <a href="projects.html" class="logo-button">pjanda</a>
+
+  <div class="section" id="blockstorm">
+    <div class="container game-container">
+      <h2 class="game-title">Blockstorm</h2>
+      <button class="play-button" onclick="playGame()">Play Game</button>
+    </div>
+  </div>
+
+  <iframe src="https://v6p9d9t4.ssl.hwcdn.net/html/8433852/index.html" class="game-iframe" id="gameIframe"></iframe>
+
+  <div class="close-button" onclick="closeFullscreenIframe()">Close</div>
+
+  <script>
+    let iframe = document.getElementById('gameIframe');
+    let closeButton = document.querySelector('.close-button');
+
+    function openFullscreenIframe() {
+      iframe.style.display = 'block';
+      closeButton.style.display = 'block';
+
+      if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+      } else if (iframe.mozRequestFullScreen) {
+        iframe.mozRequestFullScreen();
+      } else if (iframe.webkitRequestFullscreen) {
+        iframe.webkitRequestFullscreen();
+      } else if (iframe.msRequestFullscreen) {
+        iframe.msRequestFullscreen();
+      }
+    }
+
+    function closeFullscreenIframe() {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+
+      iframe.style.display = 'none';
+      closeButton.style.display = 'none';
+    }
+
+    function playGame() {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+      if (/iPad|iPhone|iPod/.test(userAgent)) {
+        openFullscreenIframe();
+      } else {
+        window.location.href = 'https://bruce10panda.itch.io/blockstorm';
+      }
+    }
+  </script>
+</body>
+</html>
