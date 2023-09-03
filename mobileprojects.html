@@ -8,7 +8,8 @@
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      overflow: hidden;
+      background-color: #111;
+      color: white;
     }
 
     .section {
@@ -18,7 +19,6 @@
       justify-content: center;
       align-items: center;
       background-color: #111;
-      color: white;
       scroll-snap-align: start;
     }
 
@@ -87,18 +87,18 @@
     /* Mobile Styles */
     @media (max-width: 768px) {
       .project-card {
-        width: 90%; /* Adjust card width for smaller screens */
+        width: 90%;
         margin: 1rem auto;
       }
 
       .text {
-        font-size: 2rem; /* Adjust text size for smaller screens */
+        font-size: 2rem;
       }
 
       .logo {
         top: 10px;
         left: 10px;
-        font-size: 1.2rem; /* Adjust logo size for smaller screens */
+        font-size: 1.2rem;
       }
     }
 
@@ -112,7 +112,7 @@
 <body>
   <a href="index.html" class="logo">pjanda</a>
 
-  <div class="section" id="projects" style="background-color: #111;">
+  <div class="section" id="projects">
     <div class="container text-container">
       <h2 class="text">Our Projects</h2>
     </div>
@@ -128,52 +128,11 @@
       <div class="project-card">
         <img src="assets/blockstorm.png" alt="Game 1">
         <h3>blockstorm</h3>
-        <p>a top down precision platformer, for pc and mobile</p>
+        <p>a top-down precision platformer, for PC and mobile</p>
       </div>
     </a>
       <!-- Add more project cards as needed -->
     </div>
   </div>
-
-  <script>
-    let scrolling = false;
-    const sections = document.querySelectorAll('.section');
-    let currentSection = 0;
-
-    window.addEventListener('wheel', (e) => {
-      if (!scrolling) {
-        scrolling = true;
-        if (e.deltaY > 0 && currentSection < sections.length - 1) {
-          currentSection++;
-        } else if (e.deltaY < 0 && currentSection > 0) {
-          currentSection--;
-        }
-        sections[currentSection].scrollIntoView({ behavior: 'smooth' });
-        setTimeout(() => {
-          scrolling = false;
-        }, 800);
-      }
-    });
-
-    window.addEventListener('touchstart', (e) => {
-      startY = e.touches[0].clientY;
-    });
-
-    window.addEventListener('touchmove', (e) => {
-      if (!scrolling) {
-        scrolling = true;
-        const deltaY = e.touches[0].clientY - startY;
-        if (deltaY > 50 && currentSection > 0) {
-          currentSection--;
-        } else if (deltaY < -50 && currentSection < sections.length - 1) {
-          currentSection++;
-        }
-        sections[currentSection].scrollIntoView({ behavior: 'smooth' });
-        setTimeout(() => {
-          scrolling = false;
-        }, 800);
-      }
-    });
-  </script>
 </body>
 </html>
