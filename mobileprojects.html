@@ -76,6 +76,12 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      transition: opacity 0.5s ease; /* Add transition for opacity */
+      opacity: 1; /* Initially fully visible */
+    }
+
+    .logo.fade-out {
+      opacity: 0; /* Apply fade-out when scrolled */
     }
 
     @keyframes fade-in {
@@ -134,5 +140,17 @@
       <!-- Add more project cards as needed -->
     </div>
   </div>
+
+  <script>
+    const logo = document.querySelector('.logo');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        logo.classList.add('fade-out');
+      } else {
+        logo.classList.remove('fade-out');
+      }
+    });
+  </script>
 </body>
 </html>
