@@ -148,7 +148,7 @@
     function playGame() {
       const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-      if (/iPad|iPhone|iPod|Android/.test(userAgent)) {
+      if (/iPad|iPhone|iPod/.test(userAgent)) {
         openFullscreenIframe();
       } else {
         window.location.href = 'https://bruce10panda.itch.io/blockstorm';

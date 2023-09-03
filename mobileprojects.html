@@ -154,6 +154,26 @@
         }, 800);
       }
     });
+
+    window.addEventListener('touchstart', (e) => {
+      startY = e.touches[0].clientY;
+    });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!scrolling) {
+        scrolling = true;
+        const deltaY = e.touches[0].clientY - startY;
+        if (deltaY > 50 && currentSection > 0) {
+          currentSection--;
+        } else if (deltaY < -50 && currentSection < sections.length - 1) {
+          currentSection++;
+        }
+        sections[currentSection].scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => {
+          scrolling = false;
+        }, 800);
+      }
+    });
   </script>
 </body>
 </html>
