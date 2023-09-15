@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      overflow: hidden; /* Hide both horizontal and vertical scrollbars */
+      background-color: #111;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .countdown {
+      font-size: 4rem; /* Increased font size */
+      font-weight: bold;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, #00a2ff, #2ee55c); /* Gradient background */
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .logo {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+    .logo {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      background: linear-gradient(45deg, #00a2ff, #2ee55c);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      transition: opacity 0.5s ease; /* Add transition for opacity */
+      opacity: 1; /* Initially fully visible */
+    }
+  </style>
+  <title>Countdown Page</title>
+</head>
+<body>
+    <a href="blockstorm-full.html" class="logo">pjanda</a> <!-- Updated the logo link -->
+
+  <div class="countdown" id="countdown">Calculating...</div>
+
+  <script>
+    // Set the target date and time (30th September at 16:00 Amsterdam time)
+    const targetDate = new Date("2023-09-30T16:00:00+02:00").getTime();
+
+    // Update the countdown every second
+    const countdownInterval = setInterval(function() {
+      const currentDate = new Date().getTime();
+      const timeLeft = targetDate - currentDate;
+
+      if (timeLeft <= 0) {
+        clearInterval(countdownInterval);
+        document.getElementById("countdown").innerHTML = "Countdown Expired!";
+        
+        // Redirect to another page when the countdown expires
+        window.location.href = "blockstorm-full.html";
+      } else {
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        const countdownText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        document.getElementById("countdown").innerHTML = countdownText;
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
