@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <script>
-    // Function to check if the user is on a mobile device
     function isMobileDevice() {
       return /Mobi|Android/i.test(navigator.userAgent);
     }
-  
-    // Redirect to the mobile version if the user is on a mobile device
+
     if (isMobileDevice()) {
       window.location.href = 'mobileindex.html';
     }
   </script>
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
@@ -22,7 +18,7 @@
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      overflow: hidden; /* Hide both horizontal and vertical scrollbars (hi) */
+      overflow: hidden; 
     }
 
     .section {
@@ -33,16 +29,16 @@
       align-items: center;
       background-color: #111;
       color: white;
-      scroll-snap-align: start; /* Snap to the top of each section */
+      scroll-snap-align: start;
     }
 
     .pjanda {
-      position: relative; /* Add relative positioning for the arrow */
-      font-size: 17rem; /* Increase font size */
+      position: relative;
+      font-size: 17rem;
       font-weight: bold;
-      margin: 2rem 0; /* Add margin for spacing */
-      opacity: 0; /* Initially hide the text */
-      animation: fade-in 5s ease forwards; /* Apply fade-in animation */
+      margin: 2rem 0;
+      opacity: 0;
+      animation: fade-in 5s ease forwards;
       background: linear-gradient(45deg, #00a2ff, #2ee55c);
       -webkit-background-clip: text;
       background-clip: text;
@@ -57,11 +53,11 @@
     }
 
     .text {
-      font-size: 2rem; /* Adjust font size */
+      font-size: 2rem;
       font-weight: bold;
-      margin: 1rem 0; /* Add margin for spacing */
-      opacity: 0; /* Initially hide the text */
-      animation: fade-in 2s ease forwards; /* Apply fade-in animation */
+      margin: 1rem 0;
+      opacity: 0;
+      animation: fade-in 2s ease forwards;
     }
 
     .button {
@@ -74,7 +70,7 @@
       padding: 10px 20px;
       margin-top: 1rem;
       cursor: pointer;
-      text-decoration: none; /* Remove underline */
+      text-decoration: none;
       transition: transform 0.2s;
     }
 
@@ -84,7 +80,7 @@
 
     @keyframes fade-in {
       to {
-        opacity: 1; /* Gradually increase opacity to make text appear */
+        opacity: 1;
       }
     }
   </style>
@@ -120,7 +116,7 @@
         sections[currentSection].scrollIntoView({ behavior: 'smooth' });
         setTimeout(() => {
           scrolling = false;
-        }, 800); // Delay to prevent rapid scrolling
+        }, 800);
       }
     });
   </script>
